@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Habesha Bites - Good Food, Right When You Want It. Order delicious meals from top local restaurants delivered fast to your door.">
+  <title>Habesha Bites | Good Food Delivered</title>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Main Script -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- =========================================================================
+       1. NAVIGATION / HEADER (EXACTLY AS IN SCREENSHOT)
+       ========================================================================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <!-- Brand Logo -->
+      <a href="#home" class="brand-logo" id="brandLogo" aria-label="Habesha Bites Home">
+        <div class="brand-icon">
+          <i class="fa-solid fa-location-dot"></i>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Habesha<span>Bites</span></span>
+          <span class="brand-slogan">Good food delivered</span>
+        </div>
+      </a>
+
+      <!-- Navbar Links (As displayed in screenshot) -->
+      <nav class="navbar-nav" aria-label="Main Navigation">
+        <ul class="navbar-links" id="navbarLinks">
+          <li><a href="#home" class="nav-item-link active" id="navHome">Home</a></li>
+          <li><a href="#explore" class="nav-item-link" id="navExplore">Explore</a></li>
+          <li><a href="#offers" class="nav-item-link" id="navOffers">Offers</a></li>
+          <li><a href="profile.html" class="nav-item-link" id="navTrack">Track Order</a></li>
+          <li><a href="#about-us" class="nav-item-link" id="navAbout">About Us</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Header Actions (Location, Profile, Cart) -->
+      <div class="header-actions">
+        <!-- Location Selector Pill -->
+        <button class="location-pill" id="locationPillBtn" aria-label="Select delivery location" title="Change location">
+          <i class="fa-solid fa-location-dot"></i>
+          <span id="currentLocationText">Addis Ababa, Ethiopia</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+
+        <!-- User Avatar -->
+        <a href="profile.html" class="user-profile-btn" id="userProfileBtn" aria-label="User Profile" title="My Account">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="User Profile">
+        </a>
+
+        <!-- Cart Button with Count Badge -->
+        <button class="cart-icon-btn" id="cartTriggerBtn" aria-label="View Shopping Cart" title="Open basket">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-badge" id="cartCountBadge">0</span>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- =======================================================================
+         2. HERO SECTION
+         ======================================================================= -->
+    <section class="hero-section" id="home">
+      <div class="container">
+        <div class="hero-grid">
+          <!-- Left Hero Content -->
+          <div class="hero-content">
+            <span class="hero-badge-tag">
+              <i class="fa-solid fa-bolt"></i> Fast 20-35 min Doorstep Delivery
+            </span>
+            <h1 class="hero-title">
+              Good Food, Right When You <span class="highlight">Want It</span>
+            </h1>
+            <p class="hero-subtitle">
+              Your favorite meals, delivered hot and fresh to your door.
+            </p>
+            <div class="hero-cta-group">
+              <a href="#explore" class="btn-primary" id="heroOrderNowBtn">
+                Order Now <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Hero Media Visual -->
+          <div class="hero-media-wrap">
+            <div class="hero-media-card">
+              <img 
+                src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=85" 
+                alt="Delicious Mediterranean feast with grilled skewers, fresh pita, salad, and hummus" 
+                class="hero-main-img"
+              >
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         3. FIND RESTAURANTS NEAR YOU
+         ======================================================================= -->
+    <section class="restaurants-section" id="restaurants">
+      <div class="container">
+        <div class="section-header-row">
+          <div>
+            <h2 class="section-title">Find Restaurants <span>Near You</span></h2>
+            <p class="section-subtitle">Discover the best local restaurants that deliver to your location.</p>
+          </div>
+
+          <!-- Location Search Input Bar -->
+          <div class="restaurant-search-bar">
+            <i class="fa-solid fa-location-dot"></i>
+            <input type="text" id="restaurantSearchInput" value="Addis Ababa, Ethiopia" placeholder="Enter your city or area...">
+            <button class="btn-search" id="restaurantSearchBtn">Search</button>
+          </div>
+
+          <a href="#explore" class="view-all-link">View all <i class="fa-solid fa-chevron-right"></i></a>
+        </div>
+
+        <!-- Restaurant Cards Grid -->
+        <div class="restaurants-grid" id="restaurantsGrid">
+          <!-- 1. Olive & Thyme -->
+          <article class="restaurant-card" data-category="Mediterranean">
+            <div class="restaurant-thumb-wrap">
+              <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80" alt="Olive & Thyme" class="restaurant-thumb">
+              <span class="restaurant-badge-rating"><i class="fa-solid fa-star"></i> 4.5</span>
+            </div>
+            <div class="restaurant-info">
+              <h3 class="restaurant-name">Olive & Thyme</h3>
+              <p class="restaurant-category">Mediterranean</p>
+              <div class="restaurant-meta">
+                <span><i class="fa-regular fa-clock"></i> 25–35 min</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-bicycle"></i> $2.49 delivery</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. Zest Kitchen -->
+          <article class="restaurant-card" data-category="Healthy">
+            <div class="restaurant-thumb-wrap">
+              <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Zest Kitchen" class="restaurant-thumb">
+              <span class="restaurant-badge-rating"><i class="fa-solid fa-star"></i> 4.6</span>
+            </div>
+            <div class="restaurant-info">
+              <h3 class="restaurant-name">Zest Kitchen</h3>
+              <p class="restaurant-category">Healthy Food</p>
+              <div class="restaurant-meta">
+                <span><i class="fa-regular fa-clock"></i> 20–30 min</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-bicycle"></i> $1.50 delivery</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. Pizza Locale -->
+          <article class="restaurant-card" data-category="Italian">
+            <div class="restaurant-thumb-wrap">
+              <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" alt="Pizza Locale" class="restaurant-thumb">
+              <span class="restaurant-badge-rating"><i class="fa-solid fa-star"></i> 4.4</span>
+            </div>
+            <div class="restaurant-info">
+              <h3 class="restaurant-name">Pizza Locale</h3>
+              <p class="restaurant-category">Italian</p>
+              <div class="restaurant-meta">
+                <span><i class="fa-regular fa-clock"></i> 30–40 min</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-bicycle"></i> $2.99 delivery</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. Sushi Kai -->
+          <article class="restaurant-card" data-category="Asian">
+            <div class="restaurant-thumb-wrap">
+              <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=600&q=80" alt="Sushi Kai" class="restaurant-thumb">
+              <span class="restaurant-badge-rating"><i class="fa-solid fa-star"></i> 4.7</span>
+            </div>
+            <div class="restaurant-info">
+              <h3 class="restaurant-name">Sushi Kai</h3>
+              <p class="restaurant-category">Japanese</p>
+              <div class="restaurant-meta">
+                <span><i class="fa-regular fa-clock"></i> 25–35 min</span>
+                <span>•</span>
+                <span><i class="fa-solid fa-bicycle"></i> $2.49 delivery</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         7. EXTENDED FOOD LISTS & MENU (EXPLORE SECTION)
+         ======================================================================= -->
+    <section class="explore-menu-section" id="explore">
+      <div class="container">
+        <div class="section-header-row">
+          <div>
+            <h2 class="section-title">Browse Full <span>Food Lists</span></h2>
+            <p class="section-subtitle">Hand-crafted culinary creations prepared to perfection upon your order.</p>
+          </div>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="menu-filter-toolbar">
+          <div class="menu-category-tabs" id="menuFilterTabs">
+            <button class="cat-tab-btn active" data-filter="all">All Dishes</button>
+            <button class="cat-tab-btn" data-filter="Mediterranean">Mediterranean</button>
+            <button class="cat-tab-btn" data-filter="Italian">Italian</button>
+            <button class="cat-tab-btn" data-filter="Asian">Asian</button>
+            <button class="cat-tab-btn" data-filter="American">American</button>
+            <button class="cat-tab-btn" data-filter="Mexican">Mexican</button>
+            <button class="cat-tab-btn" data-filter="Healthy">Healthy</button>
+            <button class="cat-tab-btn" data-filter="Desserts">Desserts</button>
+            <button class="cat-tab-btn" data-filter="Habesha">Habesha Specials</button>
+          </div>
+
+          <div class="menu-search-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="menuFoodSearchInput" placeholder="Search dishes, ingredients...">
+          </div>
+        </div>
+
+        <!-- Food Grid Container (Populated by JavaScript) -->
+        <div class="menu-food-grid" id="fullMenuFoodGrid"></div>
+      </div>
+    </section>
+
+
+
+    <!-- =======================================================================
+         9. WHAT OUR CUSTOMERS SAY & REFER & EARN
+         ======================================================================= -->
+    <section class="reviews-section" id="about-us">
+      <div class="container">
+        <div class="section-header-row">
+          <div>
+            <h2 class="section-title">What Our <span>Customers</span> Say</h2>
+            <p class="section-subtitle">Real experiences from food lovers in your neighborhood.</p>
+          </div>
+        </div>
+
+        <div class="reviews-grid">
+          <!-- Customer Reviews 3 Columns -->
+          <div class="testimonials-row">
+            <!-- Review 1: Sophia M. -->
+            <div class="review-card">
+              <div class="reviewer-meta">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80" alt="Sophia M." class="reviewer-avatar">
+                <div class="reviewer-info">
+                  <h5>Sophia M.</h5>
+                  <div class="star-rating-row">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="review-quote">"The best Mediterranean platter I've had in a while. Super fresh and delivered on time!"</p>
+            </div>
+
+            <!-- Review 2: James T. -->
+            <div class="review-card">
+              <div class="reviewer-meta">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="James T." class="reviewer-avatar">
+                <div class="reviewer-info">
+                  <h5>James T.</h5>
+                  <div class="star-rating-row">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="review-quote">"Great variety, easy ordering and the food is consistently amazing."</p>
+            </div>
+
+            <!-- Review 3: Ava L. -->
+            <div class="review-card">
+              <div class="reviewer-meta">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80" alt="Ava L." class="reviewer-avatar">
+                <div class="reviewer-info">
+                  <h5>Ava L.</h5>
+                  <div class="star-rating-row">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="review-quote">"Love the tracking feature and exclusive offers. Highly recommended!"</p>
+            </div>
+          </div>
+
+          <!-- Refer & Earn Card -->
+          <div class="refer-card">
+            <div class="refer-card-header">
+              <h4>Refer & Earn</h4>
+              <p>Invite friends and earn $10 credit!</p>
+            </div>
+            <button class="btn-invite" id="btnInviteFriends">Invite Now</button>
+            <div class="gift-illustration">
+              <i class="fa-solid fa-gifts" style="font-size:4rem; color:rgba(255,255,255,0.85);"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         10. PROMOTIONAL BANNERS / DEALS BAR
+         ======================================================================= -->
+    <section class="deals-section" id="offers">
+      <div class="container">
+        <div class="deals-grid">
+          <!-- Deal 1 -->
+          <div class="deal-banner-card deal-dark" data-code="WELCOME20">
+            <div class="deal-copy">
+              <h4>Flat 20% Off</h4>
+              <p>On your first order</p>
+              <span class="promo-code-badge">Use Code: <strong>WELCOME20</strong></span>
+            </div>
+            <div class="deal-media">
+              <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=300&q=80" alt="Food discount">
+            </div>
+          </div>
+
+          <!-- Deal 2 -->
+          <div class="deal-banner-card deal-light" data-code="FREESHIP">
+            <div class="deal-copy">
+              <h4>Free Delivery</h4>
+              <p>On orders over $25</p>
+              <span class="promo-code-badge">Use Code: <strong>FREESHIP</strong></span>
+            </div>
+            <div class="deal-media">
+              <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=300&q=80" alt="Free delivery scooter">
+            </div>
+          </div>
+
+          <!-- Deal 3 -->
+          <div class="deal-banner-card deal-black" data-code="WEEKEND30">
+            <div class="deal-copy">
+              <h4>Weekend Special</h4>
+              <p>Up to 30% Off selected dishes</p>
+              <span class="promo-code-badge">Use Code: <strong>WEEKEND30</strong></span>
+            </div>
+            <div class="deal-media">
+              <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=300&q=80" alt="Weekend pizza deal">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       11. FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <!-- Col 1: Brand & Social -->
+        <div class="footer-brand-col">
+          <div class="brand-logo">
+            <div class="brand-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="brand-text">
+              <span class="brand-name" style="color:white;">Habesha<span style="color:var(--accent);">Bites</span></span>
+              <span class="brand-slogan" style="color:rgba(255,255,255,0.6);">Good food delivered</span>
+            </div>
+          </div>
+          <p>Delicious meals from your favorite restaurants, delivered fast and fresh.</p>
+          <div class="social-links">
+            <a href="#" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-btn" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" class="social-btn" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Company -->
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="#about-us">About Us</a></li>
+            <li><a href="profile.html">My Account</a></li>
+            <li><a href="login.html">Sign In / Register</a></li>
+            <li><a href="admin.html" style="color: #f59e0b; font-weight: 700;"><i class="fa-solid fa-shield-halved"></i> Restaurant Admin</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Support -->
+        <div class="footer-col">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Refund Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: For Partners -->
+        <div class="footer-col">
+          <h5>For Partners</h5>
+          <ul>
+            <li><a href="#">Partner With Us</a></li>
+            <li><a href="#">Restaurant Signup</a></li>
+            <li><a href="#">Delivery Jobs</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Download Our App -->
+        <div class="footer-col">
+          <h5>Download Our App</h5>
+          <div class="app-download-badges">
+            <a href="#" class="store-badge-btn">
+              <i class="fa-brands fa-apple"></i>
+              <div>
+                <small>Download on the</small>
+                <strong>App Store</strong>
+              </div>
+            </a>
+            <a href="#" class="store-badge-btn">
+              <i class="fa-brands fa-google-play"></i>
+              <div>
+                <small>GET IT ON</small>
+                <strong>Google Play</strong>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <span>© 2026 Habesha Bites. All rights reserved.</span>
+        <span>Made with love for foodies in Ethiopia and beyond.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       12. CART DRAWER OVERLAY
+       ========================================================================= -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay">
+    <aside class="cart-drawer" aria-label="Shopping Cart">
+      <div class="cart-header">
+        <h3>Your Order <span id="cartDrawerCountText" style="color:var(--text-muted); font-size:1rem; font-weight:500;">(0 items)</span></h3>
+        <button class="btn-close-drawer" id="btnCloseCartDrawer" aria-label="Close cart">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="cart-items-body" id="cartItemsContainer">
+        <!-- Rendered dynamically -->
+        <div class="cart-empty-state" id="cartEmptyState">
+          <i class="fa-solid fa-basket-shopping"></i>
+          <h4>Your basket is empty</h4>
+          <p>Explore our delicious menu items and add your favorites!</p>
+        </div>
+      </div>
+
+      <div class="cart-footer-summary" id="cartSummaryContainer">
+        <!-- Promo Input -->
+        <div class="promo-input-row">
+          <input type="text" id="cartPromoInput" placeholder="Enter promo code (e.g. WELCOME20)">
+          <button class="btn-apply-promo" id="btnApplyPromo">Apply</button>
+        </div>
+
+        <div class="summary-line">
+          <span>Subtotal</span>
+          <strong id="cartSubtotalText">$0.00</strong>
+        </div>
+        <div class="summary-line" id="cartDiscountRow" style="display:none; color:var(--accent);">
+          <span>Promo Discount</span>
+          <strong id="cartDiscountText">-$0.00</strong>
+        </div>
+        <div class="summary-line">
+          <span>Delivery Fee</span>
+          <strong id="cartDeliveryFeeText">$2.49</strong>
+        </div>
+        <div class="summary-line total-line">
+          <span>Total</span>
+          <strong id="cartTotalText">$0.00</strong>
+        </div>
+
+        <button class="btn-checkout-now" id="btnProceedCheckout" disabled>
+          Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- =========================================================================
+       13. DISH CUSTOMIZATION MODAL
+       ========================================================================= -->
+  <div class="modal-overlay" id="dishModalOverlay">
+    <div class="modal-card">
+      <div class="modal-media-header">
+        <img src="" alt="Dish image" class="modal-dish-img" id="modalDishImg">
+        <button class="modal-close-btn" id="btnCloseDishModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-content">
+        <h3 class="modal-dish-title" id="modalDishTitle">Dish Name</h3>
+        <p class="modal-dish-desc" id="modalDishDesc">Dish description goes here.</p>
+
+        <!-- Spice Options -->
+        <div class="custom-option-group">
+          <h5>Choose Spice Level</h5>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <label style="display:flex; align-items:center; gap:6px; font-size:0.88rem; cursor:pointer;">
+              <input type="radio" name="modalSpice" value="Mild" checked> Mild
+            </label>
+            <label style="display:flex; align-items:center; gap:6px; font-size:0.88rem; cursor:pointer;">
+              <input type="radio" name="modalSpice" value="Medium Warm"> Medium Warm 🔥
+            </label>
+            <label style="display:flex; align-items:center; gap:6px; font-size:0.88rem; cursor:pointer;">
+              <input type="radio" name="modalSpice" value="Extra Hot"> Extra Hot 🔥🔥
+            </label>
+          </div>
+        </div>
+
+        <!-- Addons -->
+        <div class="custom-option-group">
+          <h5>Add-Ons & Extras</h5>
+          <div class="addons-list" id="modalAddonsList"></div>
+        </div>
+
+        <!-- Special Instructions -->
+        <div class="custom-option-group">
+          <h5>Special Kitchen Notes</h5>
+          <input type="text" id="modalDishNotes" placeholder="e.g. Extra sauce on side, no onions..." style="width:100%; padding:10px 14px; border:1px solid var(--border-light); border-radius:var(--radius-sm); outline:none;">
+        </div>
+
+        <div class="modal-actions-bar">
+          <div class="modal-qty-ctrl">
+            <button class="qty-btn" id="modalMinusQty"><i class="fa-solid fa-minus"></i></button>
+            <strong id="modalQtyDisplay">1</strong>
+            <button class="qty-btn" id="modalPlusQty"><i class="fa-solid fa-plus"></i></button>
+          </div>
+          <button class="btn-confirm-add" id="btnConfirmDishAdd">
+            <span>Add to Order</span>
+            <strong id="modalComputedTotal">$0.00</strong>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       14. LOCATION SELECTOR MODAL
+       ========================================================================= -->
+  <div class="modal-overlay" id="locationModalOverlay">
+    <div class="modal-card" style="max-width:440px;">
+      <div class="modal-content">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+          <h3 style="font-size:1.3rem; font-weight:800;">Select Delivery City</h3>
+          <button class="btn-close-drawer" id="btnCloseLocationModal"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:18px;">Choose your delivery zone for accurate local restaurant menus.</p>
+        
+        <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:20px;">
+          <button class="city-select-btn" data-city="Addis Ababa, Ethiopia" style="padding:12px; border:1px solid var(--border-light); border-radius:10px; text-align:left; font-weight:700; background:var(--bg-body); cursor:pointer;">
+            📍 Addis Ababa, Ethiopia
+          </button>
+          <button class="city-select-btn" data-city="Dire Dawa, Ethiopia" style="padding:12px; border:1px solid var(--border-light); border-radius:10px; text-align:left; font-weight:700; background:var(--bg-body); cursor:pointer;">
+            📍 Dire Dawa, Ethiopia
+          </button>
+          <button class="city-select-btn" data-city="Hawassa, Ethiopia" style="padding:12px; border:1px solid var(--border-light); border-radius:10px; text-align:left; font-weight:700; background:var(--bg-body); cursor:pointer;">
+            📍 Hawassa, Ethiopia
+          </button>
+          <button class="city-select-btn" data-city="Bahir Dar, Ethiopia" style="padding:12px; border:1px solid var(--border-light); border-radius:10px; text-align:left; font-weight:700; background:var(--bg-body); cursor:pointer;">
+            📍 Bahir Dar, Ethiopia
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+</body>
+</html>

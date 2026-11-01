@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sign in or create an account on Habesha Bites to order authentic Ethiopian meals, track deliveries, and save favorite dishes.">
+  <title>Sign In & Register | Habesha Bites</title>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Base Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* =========================================================================
+       AUTHENTICATION PAGE STYLING (LOGIN & REGISTER)
+       ========================================================================= */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      background-color: var(--bg-surface);
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .auth-page-container {
+      flex: 1;
+      display: flex;
+      padding: 0;
+      margin: 0;
+      width: 100vw;
+      min-height: 100vh;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .auth-card-wrapper {
+      width: 100vw;
+      max-width: 100%;
+      min-height: 100vh;
+      height: 100vh;
+      background: #ffffff;
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
+      display: grid;
+      grid-template-columns: 52% 48%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* -------------------------------------------------------------------------
+       1. LEFT PROMOTIONAL SECTION (BURGUNDY GRADIENT & TALABAT HERO)
+       ------------------------------------------------------------------------- */
+    .auth-promo-panel {
+      background: #710a0b;
+      background: radial-gradient(circle at 75% 58%, #ff4b1f 0%, #e62b16 28%, #9b131b 52%, #680b10 74%, #35040a 100%);
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 40px 52px 34px 52px;
+      color: #ffffff;
+      z-index: 1;
+    }
+
+    /* Subtle food illustration doodles in the background */
+    .promo-doodles-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .doodle {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.22;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+
+    .doodle-burger {
+      top: 18px;
+      right: 70px;
+      width: 140px;
+      height: 115px;
+      transform: rotate(-6deg);
+    }
+
+    .doodle-fries {
+      top: 140px;
+      left: 10px;
+      width: 75px;
+      height: 110px;
+      transform: rotate(8deg);
+      opacity: 0.18;
+    }
+
+    .doodle-pizza {
+      bottom: 80px;
+      left: 30px;
+      width: 85px;
+      height: 85px;
+      transform: rotate(-15deg);
+      opacity: 0.16;
+    }
+
+    /* Radiant swoosh layer in bottom-left */
+    .promo-swoosh-layer {
+      position: absolute;
+      bottom: -60px;
+      left: -60px;
+      width: 380px;
+      height: 240px;
+      background: radial-gradient(ellipse at center, rgba(242, 84, 48, 0.75) 0%, rgba(217, 43, 22, 0.3) 50%, transparent 75%);
+      border-radius: 50%;
+      transform: rotate(-12deg);
+      pointer-events: none;
+      z-index: 1;
+      filter: blur(28px);
+    }
+
+    /* Content wrapper for Left Promo */
+    .promo-content-wrapper {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      width: 100%;
+    }
+
+    /* Top: Brand Header */
+    .promo-brand-header {
+      margin-bottom: 16px;
+    }
+
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .brand-badge-icon {
+      width: 46px;
+      height: 46px;
+      background: #ff5722;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: #ffffff;
+      box-shadow: 0 6px 18px rgba(255, 87, 34, 0.45);
+    }
+
+    .brand-text-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      line-height: 1.1;
+      color: #ffffff;
+    }
+
+    .brand-title span {
+      color: #ff6b3d;
+    }
+
+    .brand-slogan-text {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-top: 3px;
+    }
+
+    /* Copy block */
+    .promo-text-block {
+      margin-bottom: 6px;
+    }
+
+    .promo-pill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 14px;
+      width: fit-content;
+    }
+
+    .promo-pill-tag i {
+      color: #ff6b3d;
+    }
+
+    .promo-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(1.9rem, 2.5vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.16;
+      margin-bottom: 12px;
+      color: #ffffff;
+      letter-spacing: -0.3px;
+    }
+
+    .promo-headline .highlight-orange {
+      color: #ff6b3d;
+      font-style: italic;
+    }
+
+    .promo-description {
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.55;
+      max-width: 440px;
+    }
+
+    /* Hero Food & Scooter Delivery Composite Visual */
+    .promo-hero-visual-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 8px 0 16px;
+      width: 100%;
+    }
+
+    .promo-hero-image {
+      max-width: 480px;
+      width: 100%;
+      height: auto;
+      max-height: 275px;
+      object-fit: contain;
+      filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.4));
+      transition: transform 0.3s ease;
+    }
+
+    .promo-hero-image:hover {
+      transform: scale(1.02);
+    }
+
+    /* Bottom Feature Pill Bar */
+    .promo-feature-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: rgba(30, 4, 8, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(12px);
+      padding: 10px 24px;
+      border-radius: 999px;
+      width: fit-content;
+      margin: 0 auto;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #ffffff;
+      white-space: nowrap;
+    }
+
+    .feature-icon {
+      color: #ff5722;
+      font-size: 0.88rem;
+    }
+
+    .feature-sep {
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 0.85rem;
+      font-weight: 300;
+    }
+
+    /* -------------------------------------------------------------------------
+       2. RIGHT FORM SECTION & CURVED TRANSITION
+       ------------------------------------------------------------------------- */
+    .auth-form-panel {
+      padding: 36px 54px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      position: relative;
+      background: #ffffff;
+      height: 100%;
+      overflow-y: auto;
+      z-index: 2;
+    }
+
+    /* Smooth Organic SVG Curve Divider between Left & Right Sections */
+    .split-curve-divider {
+      position: absolute;
+      left: 52%;
+      top: 0;
+      bottom: 0;
+      width: 86px;
+      transform: translateX(-100%);
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .split-curve-divider svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      filter: drop-shadow(-3px 0 8px rgba(255, 87, 34, 0.45));
+    }
+
+    .auth-form-container {
+      width: 100%;
+      max-width: 480px;
+      margin: auto;
+      padding: 16px 0;
+      position: relative;
+      z-index: 6;
+    }
+
+    .auth-top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .nav-location-tag {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #4b5563;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      transition: color var(--transition-fast);
+    }
+
+    .btn-back-home:hover {
+      color: var(--primary);
+    }
+
+    /* Segmented Tab Control for Login / Register */
+    .auth-switcher {
+      display: flex;
+      background: var(--bg-surface-alt);
+      border-radius: var(--radius-full);
+      padding: 5px;
+      position: relative;
+      margin-bottom: 28px;
+      border: 1px solid var(--border-light);
+    }
+
+    .auth-switch-btn {
+      flex: 1;
+      padding: 10px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      text-align: center;
+      border: none;
+      background: transparent;
+      transition: all var(--transition-fast);
+      position: relative;
+      z-index: 2;
+    }
+
+    .auth-switch-btn.active {
+      color: var(--primary);
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(18, 61, 50, 0.12);
+    }
+
+    /* Forms */
+    .auth-form {
+      display: none;
+      animation: fadeInForm 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .auth-form.active {
+      display: block;
+    }
+
+    @keyframes fadeInForm {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-header {
+      margin-bottom: 24px;
+    }
+
+    .form-header h2 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 6px;
+      letter-spacing: -0.4px;
+    }
+
+    .form-header p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .auth-input-group {
+      margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .auth-input-group label {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .input-field-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-field-wrap i.field-icon {
+      position: absolute;
+      left: 16px;
+      color: var(--text-subtle);
+      font-size: 1rem;
+      pointer-events: none;
+    }
+
+    .auth-control {
+      width: 100%;
+      padding: 13px 16px 13px 44px;
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius-md);
+      font-size: 0.94rem;
+      font-family: var(--font-sans);
+      background: #fff;
+      color: var(--text-main);
+      outline: none;
+      transition: all var(--transition-fast);
+    }
+
+    .auth-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(18, 61, 50, 0.1);
+    }
+
+    .btn-toggle-password {
+      position: absolute;
+      right: 14px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-toggle-password:hover {
+      color: var(--text-main);
+    }
+
+    /* Password Strength Indicator */
+    .password-strength-bar {
+      height: 4px;
+      background: var(--border-light);
+      border-radius: var(--radius-full);
+      margin-top: 6px;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .strength-indicator {
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s ease, background-color 0.3s ease;
+    }
+
+    .strength-text {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Form Extras (Remember me & Forgot Password) */
+    .form-extras-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+      font-size: 0.88rem;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    .forgot-link {
+      color: var(--accent);
+      font-weight: 700;
+      transition: color var(--transition-fast);
+    }
+
+    .forgot-link:hover {
+      text-decoration: underline;
+      color: var(--accent-hover);
+    }
+
+    /* Primary CTA Button */
+    .btn-auth-submit {
+      width: 100%;
+      padding: 14px 24px;
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all var(--transition-fast);
+      box-shadow: 0 4px 14px rgba(18, 61, 50, 0.25);
+    }
+
+    .btn-auth-submit:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(18, 61, 50, 0.35);
+    }
+
+    .btn-auth-submit:active {
+      transform: translateY(0);
+    }
+
+    /* Divider */
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 22px 0;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .auth-divider::before,
+    .auth-divider::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .auth-divider span {
+      padding: 0 14px;
+    }
+
+    /* Social Logins */
+    .social-auth-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .btn-social-auth {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px;
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-main);
+      background: #fff;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .btn-social-auth:hover {
+      background: var(--bg-surface-alt);
+      border-color: #d8d3c8;
+      transform: translateY(-1px);
+    }
+
+    .btn-social-auth i {
+      font-size: 1.1rem;
+    }
+
+    /* Switch footer text */
+    .auth-switch-footer {
+      text-align: center;
+      margin-top: 22px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .auth-switch-footer a {
+      color: var(--primary);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .auth-switch-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Simple Modal for Forgot Password */
+    .auth-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 61, 50, 0.45);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .auth-modal-overlay.active {
+      display: flex;
+      animation: modalFadeIn 0.25s ease;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .auth-modal-box {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: var(--shadow-xl);
+      border: 1px solid var(--border-light);
+      position: relative;
+    }
+
+    .btn-close-modal {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bg-surface-alt);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .btn-close-modal:hover {
+      color: var(--text-main);
+      background: var(--border-light);
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .auth-visual-panel {
+        padding: 40px;
+      }
+      .auth-form-panel {
+        padding: 30px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .auth-page-container {
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+      }
+
+      .auth-card-wrapper {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: 100vh;
+      }
+
+      .auth-promo-panel {
+        padding: 40px 24px 30px;
+        min-height: auto;
+      }
+
+      .split-curve-divider {
+        display: none;
+      }
+
+      .auth-form-panel {
+        padding: 32px 20px;
+        height: auto;
+        min-height: auto;
+      }
+
+      .auth-form-container {
+        padding: 0;
+      }
+
+      .promo-hero-image {
+        max-height: 200px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .social-auth-grid {
+        grid-template-columns: 1fr;
+      }
+      .form-extras-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================================
+       AUTHENTICATION CARD (LOGIN & REGISTER)
+       ========================================================================= -->
+  <main class="auth-page-container">
+    <div class="auth-card-wrapper">
+
+      <!-- Left Promotional Section (Talabat-Style Ad Showcase) -->
+      <section class="auth-promo-panel" aria-label="Habesha Bites Showcase">
+        
+        <!-- Subtle Decorative Food Pattern Doodles (SVG) -->
+        <div class="promo-doodles-bg" aria-hidden="true">
+          <!-- Burger Doodle (Top-Right) -->
+          <svg class="doodle doodle-burger" viewBox="0 0 120 100" fill="none" stroke="rgba(255, 185, 140, 0.28)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M 15,50 C 15,18 105,18 105,50 Z" />
+            <path d="M 40,32 Q 43,30 46,32" />
+            <path d="M 60,26 Q 63,24 66,26" />
+            <path d="M 80,34 Q 83,32 86,34" />
+            <path d="M 12,54 Q 22,48 32,54 Q 42,60 52,54 Q 62,48 72,54 Q 82,60 92,54 Q 102,48 108,54" />
+            <rect x="16" y="62" width="88" height="11" rx="5.5" />
+            <path d="M 20,78 C 20,90 100,90 100,78 Z" />
+          </svg>
+
+          <!-- French Fries Doodle (Far-Left Edge) -->
+          <svg class="doodle doodle-fries" viewBox="0 0 100 120" fill="none" stroke="rgba(255, 185, 140, 0.24)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M 22,50 L 30,110 L 70,110 L 78,50 Z" />
+            <path d="M 30,50 C 40,58 60,58 70,50" />
+            <line x1="32" y1="50" x2="28" y2="15" />
+            <line x1="42" y1="50" x2="40" y2="10" />
+            <line x1="50" y1="50" x2="50" y2="8" />
+            <line x1="60" y1="50" x2="62" y2="12" />
+            <line x1="70" y1="50" x2="74" y2="20" />
+          </svg>
+
+          <!-- Pizza Slice Doodle (Bottom-Left) -->
+          <svg class="doodle doodle-pizza" viewBox="0 0 100 100" fill="none" stroke="rgba(255, 185, 140, 0.2)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M 50,15 L 85,85 C 65,95 35,95 15,85 Z" />
+            <path d="M 15,85 C 35,95 65,95 85,85" stroke-width="4" />
+            <circle cx="50" cy="50" r="4.5" />
+            <circle cx="40" cy="70" r="3.5" />
+            <circle cx="65" cy="65" r="4" />
+          </svg>
+        </div>
+
+        <!-- Radiant Orange Swoosh Layer in Bottom-Left -->
+        <div class="promo-swoosh-layer" aria-hidden="true"></div>
+
+        <!-- Content Stack -->
+        <div class="promo-content-wrapper">
+          
+          <!-- Top: Brand Header -->
+          <div class="promo-brand-header">
+            <a href="index.html" class="brand-link" aria-label="Habesha Bites Home">
+              <div class="brand-badge-icon">
+                <i class="fa-solid fa-utensils"></i>
+              </div>
+              <div class="brand-text-col">
+                <span class="brand-title">Habesha<span>Bites</span></span>
+                <span class="brand-slogan-text">GOOD FOOD DELIVERED</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Middle: Copy Block -->
+          <div class="promo-text-block">
+            <div class="promo-pill-tag">
+              <i class="fa-solid fa-fire"></i>
+              <span>Hot & Fresh Delivery in Addis Ababa</span>
+            </div>
+
+            <h1 class="promo-headline">
+              Authentic Flavor,<br>
+              <span class="highlight-orange">Right When</span><br>
+              You Want It.
+            </h1>
+
+            <p class="promo-description">
+              Sign in to unlock personalized meal recommendations, re-order your favorite Ethiopian dishes, and track deliveries straight to your door.
+            </p>
+          </div>
+
+          <!-- Lower: Food & Delivery Scooter Visual (Burger + Smartphone + Scooter Rider) -->
+          <div class="promo-hero-visual-wrap">
+            <img 
+              src="images/talabat-hero-flawless.png" 
+              alt="Crispy double burger, Talabat mobile ordering app on smartphone, and orange delivery scooter driver" 
+              class="promo-hero-image"
+              loading="eager"
+            >
+          </div>
+
+          <!-- Bottom: Small Feature Bar -->
+          <div class="promo-feature-bar">
+            <div class="feature-item">
+              <i class="fa-solid fa-bolt feature-icon"></i>
+              <span>20–35 Min Delivery</span>
+            </div>
+            <span class="feature-sep">|</span>
+            <div class="feature-item">
+              <i class="fa-solid fa-shield-halved feature-icon"></i>
+              <span>Secure Checkout</span>
+            </div>
+            <span class="feature-sep">|</span>
+            <div class="feature-item">
+              <i class="fa-solid fa-utensils feature-icon"></i>
+              <span>100% Authentic</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Curved Organic Transition Wave Divider (placed between sections) -->
+      <div class="split-curve-divider" aria-hidden="true">
+        <svg viewBox="0 0 100 1000" preserveAspectRatio="none">
+          <path d="M 100,0 C 18,220 5,400 100,1000 L 100,0 Z" fill="#ffffff" stroke="#ff6b3d" stroke-width="3.5" />
+        </svg>
+      </div>
+
+      <!-- Right Form Panel -->
+      <section class="auth-form-panel" aria-label="Account Access Form">
+        <div class="auth-form-container">
+          
+          <!-- Top Nav Link -->
+          <div class="auth-top-nav">
+            <a href="index.html" class="btn-back-home">
+              <i class="fa-solid fa-arrow-left"></i> Back to Home
+            </a>
+            <span class="nav-location-tag">
+              <i class="fa-solid fa-location-dot" style="color: #e11d48;"></i> Addis Ababa, ET
+            </span>
+          </div>
+
+        <!-- Tab Switcher: Login vs Register -->
+        <div class="auth-switcher" role="tablist">
+          <button 
+            type="button" 
+            class="auth-switch-btn active" 
+            id="tabBtnLogin" 
+            onclick="switchAuthMode('login')"
+            role="tab"
+            aria-selected="true"
+          >
+            Sign In
+          </button>
+          <button 
+            type="button" 
+            class="auth-switch-btn" 
+            id="tabBtnRegister" 
+            onclick="switchAuthMode('register')"
+            role="tab"
+            aria-selected="false"
+          >
+            Create Account
+          </button>
+        </div>
+
+        <!-- ===================================================================
+             1. SIGN IN FORM
+             =================================================================== -->
+        <form class="auth-form active" id="loginForm" onsubmit="handleLoginSubmit(event)">
+          <div class="form-header">
+            <h2>Welcome Back! 👋</h2>
+            <p>Enter your credentials to access your Habesha Bites account.</p>
+          </div>
+
+          <div class="auth-input-group">
+            <label for="loginEmail">Email Address or Phone</label>
+            <div class="input-field-wrap">
+              <i class="fa-regular fa-envelope field-icon"></i>
+              <input 
+                type="text" 
+                id="loginEmail" 
+                class="auth-control" 
+                placeholder="e.g. almaz@example.com or +251 91 123 4567"
+                required
+              >
+            </div>
+          </div>
+
+          <div class="auth-input-group">
+            <label for="loginPassword">Password</label>
+            <div class="input-field-wrap">
+              <i class="fa-solid fa-lock field-icon"></i>
+              <input 
+                type="password" 
+                id="loginPassword" 
+                class="auth-control" 
+                placeholder="Enter your password"
+                required
+              >
+              <button 
+                type="button" 
+                class="btn-toggle-password" 
+                onclick="togglePasswordVisibility('loginPassword', this)"
+                aria-label="Toggle password visibility"
+              >
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-extras-row">
+            <label class="checkbox-label">
+              <input type="checkbox" id="rememberMe" checked>
+              <span>Remember me</span>
+            </label>
+            <a href="javascript:void(0)" class="forgot-link" onclick="openForgotModal()">
+              Forgot Password?
+            </a>
+          </div>
+
+          <button type="submit" class="btn-auth-submit" id="btnLoginSubmit">
+            <span>Sign In</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+
+          <div class="auth-divider">
+            <span>Or continue with</span>
+          </div>
+
+          <div class="social-auth-grid">
+            <button type="button" class="btn-social-auth" onclick="handleSocialAuth('Google')">
+              <i class="fa-brands fa-google" style="color:#ea4335;"></i>
+              <span>Google</span>
+            </button>
+            <button type="button" class="btn-social-auth" onclick="handleSocialAuth('Apple')">
+              <i class="fa-brands fa-apple" style="color:#000;"></i>
+              <span>Apple</span>
+            </button>
+          </div>
+
+          <!-- Quick Demo Role Fillers -->
+          <div style="margin-top: 16px; padding: 12px; background: rgba(18, 61, 50, 0.05); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); text-align: center;">
+            <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px;">
+              ⚡ Quick Fill Demo Accounts
+            </div>
+            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+              <button type="button" class="btn-secondary" style="padding: 7px 14px; font-size: 0.82rem; border-radius: 8px; border: 1px solid var(--border-medium); background: #fff; cursor: pointer;" onclick="fillDemoCredentials('admin')">
+                <i class="fa-solid fa-crown" style="color: #f59e0b; margin-right: 4px;"></i> <strong>Admin</strong> (Manager)
+              </button>
+              <button type="button" class="btn-secondary" style="padding: 7px 14px; font-size: 0.82rem; border-radius: 8px; border: 1px solid var(--border-medium); background: #fff; cursor: pointer;" onclick="fillDemoCredentials('customer')">
+                <i class="fa-solid fa-user" style="color: var(--primary); margin-right: 4px;"></i> <strong>Customer</strong>
+              </button>
+            </div>
+          </div>
+
+          <div class="auth-switch-footer">
+            Don't have an account? 
+            <a href="javascript:void(0)" onclick="switchAuthMode('register')">Sign Up Free</a>
+          </div>
+        </form>
+
+        <!-- ===================================================================
+             2. REGISTER / CREATE ACCOUNT FORM
+             =================================================================== -->
+        <form class="auth-form" id="registerForm" onsubmit="handleRegisterSubmit(event)">
+          <div class="form-header">
+            <h2>Create Account 🚀</h2>
+            <p>Join Habesha Bites and enjoy fast doorstep delivery in Ethiopia.</p>
+          </div>
+
+          <div class="auth-input-group">
+            <label for="regFullName">Full Name</label>
+            <div class="input-field-wrap">
+              <i class="fa-regular fa-user field-icon"></i>
+              <input 
+                type="text" 
+                id="regFullName" 
+                class="auth-control" 
+                placeholder="e.g. Almaz Bekele"
+                required
+              >
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div class="auth-input-group">
+              <label for="regEmail">Email Address</label>
+              <div class="input-field-wrap">
+                <i class="fa-regular fa-envelope field-icon"></i>
+                <input 
+                  type="email" 
+                  id="regEmail" 
+                  class="auth-control" 
+                  placeholder="almaz@example.com"
+                  required
+                >
+              </div>
+            </div>
+
+            <div class="auth-input-group">
+              <label for="regPhone">Phone Number</label>
+              <div class="input-field-wrap">
+                <i class="fa-solid fa-phone field-icon"></i>
+                <input 
+                  type="tel" 
+                  id="regPhone" 
+                  class="auth-control" 
+                  placeholder="+251 91 123 4567"
+                  required
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="auth-input-group">
+            <label for="regCity">Delivery Zone / City</label>
+            <div class="input-field-wrap">
+              <i class="fa-solid fa-location-dot field-icon"></i>
+              <select id="regCity" class="auth-control" style="appearance:none;" required>
+                <option value="Addis Ababa, Ethiopia">Addis Ababa (Bole, Kazanchis, Piassa)</option>
+                <option value="Dire Dawa, Ethiopia">Dire Dawa, Ethiopia</option>
+                <option value="Hawassa, Ethiopia">Hawassa, Ethiopia</option>
+                <option value="Bahir Dar, Ethiopia">Bahir Dar, Ethiopia</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="auth-input-group">
+            <label for="regPassword">Create Password</label>
+            <div class="input-field-wrap">
+              <i class="fa-solid fa-lock field-icon"></i>
+              <input 
+                type="password" 
+                id="regPassword" 
+                class="auth-control" 
+                placeholder="At least 6 characters"
+                oninput="checkPasswordStrength(this.value)"
+                required
+              >
+              <button 
+                type="button" 
+                class="btn-toggle-password" 
+                onclick="togglePasswordVisibility('regPassword', this)"
+                aria-label="Toggle password visibility"
+              >
+                <i class="fa-regular fa-eye"></i>
+              </button>
+            </div>
+            <div class="password-strength-bar">
+              <div class="strength-indicator" id="strengthBar"></div>
+            </div>
+            <div class="strength-text" id="strengthText">Password strength</div>
+          </div>
+
+          <div class="form-extras-row" style="margin-bottom:18px;">
+            <label class="checkbox-label" style="font-size:0.84rem;">
+              <input type="checkbox" id="acceptTerms" required>
+              <span>I agree to Habesha Bites <a href="#" style="color:var(--primary); font-weight:700;">Terms & Privacy</a></span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-auth-submit" id="btnRegisterSubmit">
+            <span>Create My Account</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+
+          <div class="auth-divider">
+            <span>Or sign up with</span>
+          </div>
+
+          <div class="social-auth-grid">
+            <button type="button" class="btn-social-auth" onclick="handleSocialAuth('Google')">
+              <i class="fa-brands fa-google" style="color:#ea4335;"></i>
+              <span>Google</span>
+            </button>
+            <button type="button" class="btn-social-auth" onclick="handleSocialAuth('Apple')">
+              <i class="fa-brands fa-apple" style="color:#000;"></i>
+              <span>Apple</span>
+            </button>
+          </div>
+
+          <!-- Quick Demo Role Fillers -->
+          <div style="margin-top: 16px; padding: 12px; background: rgba(18, 61, 50, 0.05); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); text-align: center;">
+            <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px;">
+              ⚡ Quick Fill Demo Accounts
+            </div>
+            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+              <button type="button" class="btn-secondary" style="padding: 7px 14px; font-size: 0.82rem; border-radius: 8px; border: 1px solid var(--border-medium); background: #fff; cursor: pointer;" onclick="fillDemoCredentials('admin')">
+                <i class="fa-solid fa-crown" style="color: #f59e0b; margin-right: 4px;"></i> <strong>Admin</strong> (Manager)
+              </button>
+              <button type="button" class="btn-secondary" style="padding: 7px 14px; font-size: 0.82rem; border-radius: 8px; border: 1px solid var(--border-medium); background: #fff; cursor: pointer;" onclick="fillDemoCredentials('customer')">
+                <i class="fa-solid fa-user" style="color: var(--primary); margin-right: 4px;"></i> <strong>Customer</strong>
+              </button>
+            </div>
+          </div>
+
+          <div class="auth-switch-footer">
+            Already have an account? 
+            <a href="javascript:void(0)" onclick="switchAuthMode('login')">Sign In</a>
+          </div>
+        </form>
+
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       3. FORGOT PASSWORD MODAL
+       ========================================================================= -->
+  <div class="auth-modal-overlay" id="forgotModalOverlay">
+    <div class="auth-modal-box">
+      <button class="btn-close-modal" onclick="closeForgotModal()"><i class="fa-solid fa-xmark"></i></button>
+      <div style="text-align:center; margin-bottom:20px;">
+        <div style="width:52px; height:52px; border-radius:50%; background:var(--primary-light); color:var(--primary); display:inline-flex; align-items:center; justify-content:center; font-size:1.4rem; margin-bottom:12px;">
+          <i class="fa-solid fa-key"></i>
+        </div>
+        <h3 style="font-size:1.35rem; font-weight:800; color:var(--text-main); margin-bottom:6px;">Reset Password</h3>
+        <p style="font-size:0.88rem; color:var(--text-muted);">Enter your email or phone number and we will send you a verification code.</p>
+      </div>
+
+      <form onsubmit="handleForgotSubmit(event)">
+        <div class="auth-input-group" style="margin-bottom:20px;">
+          <label for="forgotInput">Email or Phone Number</label>
+          <div class="input-field-wrap">
+            <i class="fa-regular fa-envelope field-icon"></i>
+            <input type="text" id="forgotInput" class="auth-control" placeholder="e.g. almaz@example.com" required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-auth-submit">
+          Send Reset Instructions
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- =========================================================================
+       4. CLIENT JAVASCRIPT
+       ========================================================================= -->
+  <script>
+    // Switch between Login and Register tabs
+    function switchAuthMode(mode) {
+      const isLogin = mode === 'login';
+      document.getElementById('tabBtnLogin').classList.toggle('active', isLogin);
+      document.getElementById('tabBtnRegister').classList.toggle('active', !isLogin);
+      document.getElementById('tabBtnLogin').setAttribute('aria-selected', isLogin);
+      document.getElementById('tabBtnRegister').setAttribute('aria-selected', !isLogin);
+
+      document.getElementById('loginForm').classList.toggle('active', isLogin);
+      document.getElementById('registerForm').classList.toggle('active', !isLogin);
+
+      // Update URL hash without reload
+      if (history.pushState) {
+        history.pushState(null, null, isLogin ? '#login' : '#register');
+      }
+    }
+
+    // Auto-fill Demo Credentials
+    function fillDemoCredentials(type) {
+      switchAuthMode('login');
+      if (type === 'admin') {
+        document.getElementById('loginEmail').value = 'admin@habeshabites.com';
+        document.getElementById('loginPassword').value = 'admin123';
+        showToast("👑 Admin credentials filled!", "info");
+      } else {
+        document.getElementById('loginEmail').value = 'customer@habeshabites.com';
+        document.getElementById('loginPassword').value = 'customer123';
+        showToast("👤 Customer credentials filled!", "info");
+      }
+    }
+
+    // Toggle password eye icon
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const isPassword = input.type === 'password';
+      input.type = isPassword ? 'text' : 'password';
+      btn.innerHTML = isPassword 
+        ? '<i class="fa-regular fa-eye-slash"></i>' 
+        : '<i class="fa-regular fa-eye"></i>';
+    }
+
+    // Password strength checker
+    function checkPasswordStrength(val) {
+      const bar = document.getElementById('strengthBar');
+      const text = document.getElementById('strengthText');
+      if (!val) {
+        bar.style.width = '0%';
+        text.textContent = 'Password strength';
+        text.style.color = 'var(--text-muted)';
+        return;
+      }
+
+      let score = 0;
+      if (val.length >= 6) score++;
+      if (val.length >= 10) score++;
+      if (/[A-Z]/.test(val)) score++;
+      if (/[0-9]/.test(val)) score++;
+      if (/[^A-Za-z0-9]/.test(val)) score++;
+
+      if (score <= 2) {
+        bar.style.width = '33%';
+        bar.style.backgroundColor = '#ef4444';
+        text.textContent = 'Weak password';
+        text.style.color = '#ef4444';
+      } else if (score <= 4) {
+        bar.style.width = '66%';
+        bar.style.backgroundColor = '#f59e0b';
+        text.textContent = 'Good password';
+        text.style.color = '#d97706';
+      } else {
+        bar.style.width = '100%';
+        bar.style.backgroundColor = '#22c55e';
+        text.textContent = 'Strong password! 🔒';
+        text.style.color = '#16a34a';
+      }
+    }
+
+    // Handle Login
+    async function handleLoginSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      const btn = document.getElementById('btnLoginSubmit');
+      
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Signing in...';
+
+      try {
+        const response = await fetch('api/auth/login.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, password: password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          const userRole = data.user.role || (email.toLowerCase().includes('admin') ? 'admin' : 'customer');
+          const user = {
+            id: data.user.id,
+            name: data.user.name,
+            email: data.user.email,
+            phone: data.user.phone,
+            city: data.user.city,
+            role: userRole,
+            isLoggedIn: true
+          };
+          localStorage.setItem("habeshabites_user", JSON.stringify(user));
+
+          if (userRole === 'admin') {
+            showToast("👑 Welcome Admin! Redirecting to Admin Dashboard...", "success");
+            setTimeout(() => {
+              window.location.href = "admin.html";
+            }, 1000);
+          } else {
+            showToast("🎉 Welcome back! Redirecting to your account...", "success");
+            setTimeout(() => {
+              window.location.href = "profile.html";
+            }, 1000);
+          }
+        } else {
+          showToast(`❌ ${data.message || 'Login failed. Please check your credentials.'}`, "error");
+          btn.disabled = false;
+          btn.innerHTML = '<span>Sign In to Account</span><i class="fa-solid fa-arrow-right"></i>';
+        }
+      } catch (err) {
+        console.warn("Backend API unreachable or offline, using demo fallback:", err);
+        // Fallback for direct browser file opening
+        const isAdmin = email.toLowerCase().includes('admin');
+        const user = {
+          id: isAdmin ? 1 : 2,
+          name: isAdmin ? "Restaurant Manager (Admin)" : (email.includes('@') ? email.split('@')[0] : "Almaz Bekele"),
+          email: email,
+          role: isAdmin ? 'admin' : 'customer',
+          isLoggedIn: true,
+          city: "Addis Ababa, Ethiopia"
+        };
+        localStorage.setItem("habeshabites_user", JSON.stringify(user));
+
+        if (isAdmin) {
+          showToast("👑 Welcome Admin! (Demo Mode) Redirecting to Dashboard...", "success");
+          setTimeout(() => {
+            window.location.href = "admin.html";
+          }, 1000);
+        } else {
+          showToast("🎉 Welcome back! (Local Session)", "success");
+          setTimeout(() => {
+            window.location.href = "profile.html";
+          }, 1000);
+        }
+      }
+    }
+
+    // Handle Register
+    async function handleRegisterSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('regFullName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const phone = document.getElementById('regPhone').value.trim();
+      const city = document.getElementById('regCity').value;
+      const password = document.getElementById('regPassword').value;
+      const btn = document.getElementById('btnRegisterSubmit');
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Creating account...';
+
+      try {
+        const response = await fetch('api/auth/register.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            phone: phone,
+            city: city,
+            password: password
+          })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          const user = {
+            id: data.user.id,
+            name: data.user.name,
+            email: data.user.email,
+            phone: data.user.phone,
+            city: data.user.city,
+            isLoggedIn: true
+          };
+          localStorage.setItem("habeshabites_user", JSON.stringify(user));
+
+          showToast("🎉 Account created successfully! Welcome to Habesha Bites.", "success");
+          setTimeout(() => {
+            window.location.href = "profile.html";
+          }, 1200);
+        } else {
+          showToast(`❌ ${data.message || 'Registration failed.'}`, "error");
+          btn.disabled = false;
+          btn.innerHTML = '<span>Create My Account</span><i class="fa-solid fa-arrow-right"></i>';
+        }
+      } catch (err) {
+        console.warn("Backend API unreachable or offline, using demo fallback:", err);
+        const user = {
+          name: name,
+          email: email,
+          phone: phone,
+          city: city,
+          isLoggedIn: true
+        };
+        localStorage.setItem("habeshabites_user", JSON.stringify(user));
+
+        showToast("🎉 Account created! (Local Session)", "success");
+        setTimeout(() => {
+          window.location.href = "profile.html";
+        }, 1200);
+      }
+    }
+
+    // Social Auth Mock
+    function handleSocialAuth(provider) {
+      showToast(`🔐 Connecting securely via ${provider}...`, "info");
+      setTimeout(() => {
+        const user = {
+          name: provider + " User",
+          email: "user@" + provider.toLowerCase() + ".com",
+          isLoggedIn: true,
+          city: "Addis Ababa, Ethiopia"
+        };
+        localStorage.setItem("habeshabites_user", JSON.stringify(user));
+        showToast(`✅ Successfully signed in with ${provider}!`, "success");
+        setTimeout(() => {
+          window.location.href = "profile.html";
+        }, 1000);
+      }, 800);
+    }
+
+    // Forgot Password Modal
+    function openForgotModal() {
+      document.getElementById('forgotModalOverlay').classList.add('active');
+    }
+
+    function closeForgotModal() {
+      document.getElementById('forgotModalOverlay').classList.remove('active');
+    }
+
+    function handleForgotSubmit(e) {
+      e.preventDefault();
+      const val = document.getElementById('forgotInput').value.trim();
+      closeForgotModal();
+      showToast(`📩 Password reset link sent to ${val}! Check your inbox.`, "success");
+    }
+
+    // Toast Notification Utility
+    function showToast(msg, type = "info") {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = `toast-msg toast-${type}`;
+      toast.style.cssText = `
+        background: #141716;
+        color: #fff;
+        padding: 14px 22px;
+        border-radius: 12px;
+        margin-top: 10px;
+        box-shadow: 0 10px 28px rgba(0,0,0,0.22);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.92rem;
+        font-weight: 700;
+        animation: toastIn 0.3s ease;
+      `;
+      toast.innerHTML = msg;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+
+    // Auto-detect mode from URL query or hash
+    document.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const mode = urlParams.get('mode') || (window.location.hash === '#register' ? 'register' : 'login');
+      if (mode === 'register') {
+        switchAuthMode('register');
+      }
+    });
+  </script>
+</body>
+</html>
