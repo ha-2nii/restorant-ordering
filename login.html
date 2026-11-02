@@ -249,17 +249,19 @@
     /* Hero Food & Scooter Delivery Composite Visual */
     .promo-hero-visual-wrap {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 8px 0 16px;
-      width: 100%;
+      align-items: flex-end;
+      justify-content: flex-end;
+      margin: 8px -15px 16px 0;
+      width: calc(100% + 15px);
+      position: relative;
+      z-index: 3;
     }
 
     .promo-hero-image {
-      max-width: 480px;
+      max-width: 580px;
       width: 100%;
       height: auto;
-      max-height: 275px;
+      max-height: 330px;
       object-fit: contain;
       filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.4));
       transition: transform 0.3s ease;
@@ -775,8 +777,15 @@
         padding: 0;
       }
 
+      .promo-hero-visual-wrap {
+        justify-content: center;
+        margin: 12px 0;
+        width: 100%;
+      }
+
       .promo-hero-image {
-        max-height: 200px;
+        max-width: 100%;
+        max-height: 220px;
       }
     }
 
@@ -874,11 +883,11 @@
             </p>
           </div>
 
-          <!-- Lower: Food & Delivery Scooter Visual (Burger + Smartphone + Scooter Rider) -->
+          <!-- Lower: Food & Delivery Scooter Visual (Burger + Delivery Scooter Rider) -->
           <div class="promo-hero-visual-wrap">
             <img 
-              src="images/talabat-hero-flawless.png" 
-              alt="Crispy double burger, Talabat mobile ordering app on smartphone, and orange delivery scooter driver" 
+              src="images/delivery-hero-with-shadow.png" 
+              alt="Crispy double chicken burger and Habesha Bites food delivery rider on orange scooter" 
               class="promo-hero-image"
               loading="eager"
             >
